@@ -40,8 +40,7 @@
 		"dev": "storybook dev -p 6006",
 		"build": "storybook build",
 		"lint": "eslint .",
-		"preview": "npx http-server storybook-static",
-		"deploy": "dotenv -e .env -- npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN"
+		"preview": "npx http-server storybook-static"
 	},
 	"dependencies": {
 		"@radix-ui/react-slot": "^1.2.3",
@@ -69,7 +68,6 @@
 		"tailwindcss": "^4.1.12"
 	},
 	"devDependencies": {
-		"@chromatic-com/storybook": "^4.1.0",
 		"@eslint/js": "^9.33.0",
 		"@storybook/addon-a11y": "^9.1.2",
 		"@storybook/addon-docs": "^9.1.2",
