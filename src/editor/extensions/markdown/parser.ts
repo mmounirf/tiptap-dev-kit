@@ -27,9 +27,12 @@ export async function markdownToPM(
           level: heading.depth,
         })),
         blockquote: toPmNode(schema.nodes.blockquote),
-        code: toPmNode(schema.nodes.codeBlock, (code) => ({
-          language: code.lang ?? null,
-        })),
+        code(code) {
+          return schema.nodes.codeBlock.create(
+            { language: code.lang ?? null },
+            schema.text(code.value)
+          );
+        },
         thematicBreak: toPmNode(schema.nodes.horizontalRule),
 
         list(node, _parent, state) {
@@ -50,7 +53,11 @@ export async function markdownToPM(
           href: link.url,
           title: link.title ?? null,
         })),
-        inlineCode: toPmMark(schema.marks.code),
+        inlineCode(inlineCode) {
+          return schema.text(inlineCode.value ?? "", [
+            schema.marks.code.create(),
+          ]);
+        },
         highlight: toPmMark(schema.marks.highlight),
       },
     } satisfies RemarkProseMirrorOptions)

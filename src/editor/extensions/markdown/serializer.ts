@@ -8,11 +8,7 @@ import {
   fromPmMark,
 } from "@handlewithcare/remark-prosemirror";
 import remarkGfm from "remark-gfm";
-import type { Mark, Node, Schema } from "@tiptap/pm/model";
-
-const hasMark = (node: Node, name: string) =>
-  (node.marks as Mark[] | undefined)?.some((mark) => mark.type.name === name) ??
-  false;
+import type { Node, Schema } from "@tiptap/pm/model";
 
 export function pmToMarkdown(doc: Node, schema: Schema): string {
   const mdast = fromProseMirror(doc, {
@@ -26,26 +22,24 @@ export function pmToMarkdown(doc: Node, schema: Schema): string {
         value: node.textContent,
       })),
       horizontalRule: fromPmNode("thematicBreak"),
-      orderedList: fromPmNode("list", (pm) => ({
+      orderedList: fromPmNode("list", (node) => ({
         ordered: true,
-        start: pm.attrs.start ?? 1,
+        start: node.attrs.start ?? 1,
       })),
       bulletList: fromPmNode("list", () => ({ ordered: false })),
       listItem: fromPmNode("listItem"),
-
-      // fix for inlinecode mark
-      text: fromPmNode("text", (node) =>
-        hasMark(node, "code")
-          ? { type: "inlineCode", value: node.textContent }
-          : { type: "text", value: node.textContent }
-      ),
     },
     markHandlers: {
       italic: fromPmMark("emphasis"),
       bold: fromPmMark("strong"),
       strike: fromPmMark("delete"),
       highlight: fromPmMark("highlight"),
-      // code: fromPmMark("inlineCode"),
+      code(_, node) {
+        return {
+          type: "inlineCode",
+          value: node.textContent ?? "",
+        };
+      },
       link: fromPmMark("link", (mark) => ({
         url: mark.attrs.href,
         title: mark.attrs.title ?? undefined,
@@ -56,6 +50,6 @@ export function pmToMarkdown(doc: Node, schema: Schema): string {
   return unified()
     .use(remarkGfm)
     .use(remarkHighlightMark)
-    .use(remarkStringify, { resourceLink: true })
+    .use(remarkStringify, { resourceLink: true, fences: true, rule: "-" })
     .stringify(mdast);
 }
