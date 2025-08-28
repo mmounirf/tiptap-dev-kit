@@ -44,7 +44,7 @@ export default function RichTextEditor() {
         taskItem: {
           nested: true,
           HTMLAttributes: {
-            class: "flex gap-1 [&>label]:items-center [&>label]:flex",
+            class: "flex flex-start gap-1",
           },
         },
       }),
