@@ -9,7 +9,6 @@ import Heading from "@tiptap/extension-heading";
 import Blockquote from "@tiptap/extension-blockquote";
 import { ListKit } from "@tiptap/extension-list";
 import HorizontalRule from "@tiptap/extension-horizontal-rule";
-import HardBreak from "@tiptap/extension-hard-break";
 import CodeBlock from "@tiptap/extension-code-block";
 import { Placeholder } from "@tiptap/extensions";
 import { Editor } from "@/editor/Editor";
@@ -50,7 +49,6 @@ export default function RichTextEditor() {
         },
       }),
       HorizontalRule,
-      HardBreak,
       CodeBlock,
     }),
   });

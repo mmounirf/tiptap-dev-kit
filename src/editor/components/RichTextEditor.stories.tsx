@@ -17,8 +17,8 @@ const meta = {
               preconfigured with{" "}
               <em>all common marks and block-level extensions</em>. It supports
               bold, italic, underline, strike, code, link, highlight, headings,
-              blockquotes, lists (bullet, ordered, task), horizontal rules, hard
-              breaks, and code blocks.
+              blockquotes, lists (bullet, ordered, task), horizontal rules and
+              code blocks.
             </p>
 
             <p>
@@ -159,15 +159,6 @@ const meta = {
                   </li>
                   <li>
                     <a
-                      href="https://tiptap.dev/docs/editor/extensions/nodes/hard-break"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      HardBreak
-                    </a>
-                  </li>
-                  <li>
-                    <a
                       href="https://tiptap.dev/docs/editor/extensions/nodes/code-block"
                       target="_blank"
                       rel="noreferrer"
@@ -302,13 +293,6 @@ const meta = {
                   <td>
                     <code>---</code> then Enter
                   </td>
-                </tr>
-                <tr>
-                  <td>Hard Break</td>
-                  <td>
-                    <code>Shift + Enter</code>
-                  </td>
-                  <td>—</td>
                 </tr>
                 <tr>
                   <td>Code Block</td>

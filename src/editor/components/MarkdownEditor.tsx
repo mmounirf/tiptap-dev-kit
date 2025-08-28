@@ -9,7 +9,6 @@ import Heading from "@tiptap/extension-heading";
 import Blockquote from "@tiptap/extension-blockquote";
 import { ListKit } from "@tiptap/extension-list";
 import HorizontalRule from "@tiptap/extension-horizontal-rule";
-import HardBreak from "@tiptap/extension-hard-break";
 import CodeBlock from "@tiptap/extension-code-block";
 
 import { Markdown } from "../extensions/markdown/extension";
@@ -64,7 +63,6 @@ export default function MarkdownEditor() {
         },
       }),
       HorizontalRule,
-      HardBreak,
       CodeBlock,
       Markdown: Markdown.configure({
         initialMarkdown: demoMarkdown,
