@@ -1,6 +1,6 @@
 import { Canvas, Source } from "@storybook/addon-docs/blocks";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import code from "./MarksEditor.tsx?raw";
+import code from "./MarkdownEditor.tsx?raw";
 import MarkdownEditor from "./MarkdownEditor";
 
 const meta = {
