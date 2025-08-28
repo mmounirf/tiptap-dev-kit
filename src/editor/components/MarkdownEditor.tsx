@@ -93,8 +93,8 @@ export default function MarkdownEditor() {
       <Editor editor={markdownEditor} />
 
       {output && (
-        <div className="p-2 m-2 w-full h-full border rounded-sm">
-          <pre style={{ whiteSpace: "pre-wrap" }}>{output}</pre>
+        <div className="p-2 m-2 w-full h-full border rounded-sm whitespace-break-spaces font-mono text-sm">
+          {output}
         </div>
       )}
     </div>
