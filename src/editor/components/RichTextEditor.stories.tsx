@@ -215,7 +215,7 @@ const meta = {
                 <tr>
                   <td>Underline</td>
                   <td>
-                    <code>Ctrl + U / Cmd + U</code>
+                    <code>Ctrl + U</code> / <code>Cmd + U</code>
                   </td>
                   <td>—</td>
                 </tr>
@@ -231,7 +231,7 @@ const meta = {
                 <tr>
                   <td>Code (mark)</td>
                   <td>
-                    <code>Ctrl + Shift + C / Cmd + Shift + C</code>
+                    <code>Ctrl + Shift + C</code> / <code>Cmd + Shift + C</code>
                   </td>
                   <td>
                     <code>`code`</code>
@@ -246,12 +246,17 @@ const meta = {
                 </tr>
                 <tr>
                   <td>Highlight</td>
-                  <td>—</td>
+                  <td>
+                    <code>Ctrl + Shift + H</code> / <code>Cmd + Shift + H</code>
+                  </td>
                   <td>==text==</td>
                 </tr>
                 <tr>
                   <td>Heading</td>
-                  <td>—</td>
+                  <td>
+                    <code>Ctrl + Alt + 1</code> / <code>Cmd + Alt + 1</code>
+                    <p>Heading level value from 1 to 6</p>
+                  </td>
                   <td>
                     <code>#</code>, <code>##</code>, … <code>######</code> then
                     space
@@ -259,28 +264,34 @@ const meta = {
                 </tr>
                 <tr>
                   <td>Blockquote</td>
-                  <td>—</td>
+                  <td>
+                    <code>Ctrl + Shift + B</code> / <code>Cmd + Shift + B</code>
+                  </td>
                   <td>
                     <code>&gt; </code> at line start
                   </td>
                 </tr>
                 <tr>
                   <td>Bullet List</td>
-                  <td>—</td>
+                  <td>
+                    <code>Ctrl + Shift + 8</code> / <code>Cmd + Shift + 8</code>
+                  </td>
                   <td>
                     <code>- </code> or <code>* </code> at line start
                   </td>
                 </tr>
                 <tr>
                   <td>Ordered List</td>
-                  <td>—</td>
+                  <td>
+                    <code>Ctrl + Shift + 7</code> / <code>Cmd + Shift + 7</code>
+                  </td>
                   <td>
                     <code>1. </code> at line start
                   </td>
                 </tr>
                 <tr>
                   <td>Task List / Item</td>
-                  <td>—</td>
+                  <code>Ctrl + Shift + 9</code> / <code>Cmd + Shift + 9</code>
                   <td>
                     <code>[ ] </code> or <code>[x] </code> then space
                   </td>
@@ -301,7 +312,9 @@ const meta = {
                 </tr>
                 <tr>
                   <td>Code Block</td>
-                  <td>—</td>
+                  <td>
+                    <code>Ctrl + Alt + C</code> / <code>Cmd + Alt + C</code>
+                  </td>
                   <td>
                     <code>```</code> then Enter
                   </td>
