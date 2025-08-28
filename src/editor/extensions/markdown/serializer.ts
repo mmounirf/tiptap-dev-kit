@@ -28,6 +28,10 @@ export function pmToMarkdown(doc: Node, schema: Schema): string {
       })),
       bulletList: fromPmNode("list", () => ({ ordered: false })),
       listItem: fromPmNode("listItem"),
+      taskList: fromPmNode("list", () => ({ ordered: false })),
+      taskItem: fromPmNode("listItem", (node) => ({
+        checked: !!node.attrs?.checked,
+      })),
     },
     markHandlers: {
       italic: fromPmMark("emphasis"),
@@ -50,6 +54,11 @@ export function pmToMarkdown(doc: Node, schema: Schema): string {
   return unified()
     .use(remarkGfm)
     .use(remarkHighlightMark)
-    .use(remarkStringify, { resourceLink: true, fences: true, rule: "-" })
+    .use(remarkStringify, {
+      resourceLink: true,
+      fences: true,
+      rule: "-",
+      bullet: "-",
+    })
     .stringify(mdast);
 }

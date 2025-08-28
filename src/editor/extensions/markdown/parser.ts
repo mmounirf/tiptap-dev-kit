@@ -35,17 +35,43 @@ export async function markdownToPM(
         },
         thematicBreak: toPmNode(schema.nodes.horizontalRule),
 
-        list(node, _parent, state) {
-          const children = state.all(node);
-          const type = node.ordered
+        list(list, _parent, state) {
+          const isTask =
+            Array.isArray(list.children) &&
+            list.children.some(
+              (listItem) => typeof listItem?.checked === "boolean"
+            );
+
+          const children = state.all(list);
+
+          if (isTask) {
+            return schema.nodes.taskList.createAndFill({}, children);
+          }
+
+          const type = list.ordered
             ? schema.nodes.orderedList
             : schema.nodes.bulletList;
           return type.createAndFill(
-            node.ordered ? { start: node.start ?? 1 } : {},
+            list.ordered ? { start: list.start ?? 1 } : {},
             children
           );
         },
-        listItem: toPmNode(schema.nodes.listItem),
+
+        listItem(listItem, _parent, state) {
+          const content = state.all(listItem);
+
+          if (typeof listItem.checked === "boolean") {
+            return schema.nodes.taskItem.createAndFill(
+              {
+                checked: !!listItem.checked,
+                nested: true,
+              },
+              content
+            );
+          }
+
+          return schema.nodes.listItem.createAndFill({}, content);
+        },
         emphasis: toPmMark(schema.marks.italic),
         strong: toPmMark(schema.marks.bold),
         delete: toPmMark(schema.marks.strike),
