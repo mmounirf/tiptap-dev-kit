@@ -20,10 +20,12 @@ import {
   editorClassName,
 } from "../defaults";
 import { makePlaceholderOptions } from "../extensions/placeholder";
-
+import { FileMention } from "../extensions/mention/demo/FileMention";
+import { UserMention } from "../extensions/mention/demo/UserMention";
 import { Editor } from "../Editor";
 import { useState } from "react";
 import { demoMarkdown } from "@/assets/markdown-demo";
+
 export default function MarkdownEditor() {
   const markdownEditor = useEditor({
     ...defaultEditorOptions,
@@ -67,6 +69,8 @@ export default function MarkdownEditor() {
       Markdown: Markdown.configure({
         initialMarkdown: demoMarkdown,
       }),
+      FileMention,
+      UserMention,
     }),
   });
   const [output, setOutput] = useState<string>("");
