@@ -231,7 +231,7 @@ const meta = {
                 <tr>
                   <td>Code (mark)</td>
                   <td>
-                    <code>Ctrl + Shift + C</code> / <code>Cmd + Shift + C</code>
+                    <code>Ctrl + E</code> / <code>Cmd + E</code>
                   </td>
                   <td>
                     <code>`code`</code>
