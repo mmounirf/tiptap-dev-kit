@@ -1,6 +1,8 @@
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
+import { remarkHighlightMark } from "remark-highlight-mark";
+
 import {
   remarkProseMirror,
   toPmNode,
@@ -16,6 +18,7 @@ export async function markdownToPM(
   const { result } = await unified()
     .use(remarkParse)
     .use(remarkGfm)
+    .use(remarkHighlightMark)
     .use(remarkProseMirror, {
       schema,
       handlers: {
@@ -40,7 +43,6 @@ export async function markdownToPM(
           );
         },
         listItem: toPmNode(schema.nodes.listItem),
-
         emphasis: toPmMark(schema.marks.italic),
         strong: toPmMark(schema.marks.bold),
         delete: toPmMark(schema.marks.strike),
@@ -49,6 +51,7 @@ export async function markdownToPM(
           title: link.title ?? null,
         })),
         inlineCode: toPmMark(schema.marks.code),
+        highlight: toPmMark(schema.marks.highlight),
       },
     } satisfies RemarkProseMirrorOptions)
     .process(markdown);

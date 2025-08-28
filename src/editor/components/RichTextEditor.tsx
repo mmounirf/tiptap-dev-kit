@@ -29,7 +29,7 @@ export default function RichTextEditor() {
       ),
       Bold,
       Code,
-      Highlight,
+      Highlight: Highlight.configure({ multicolor: true }),
       Italic,
       Link,
       Strike,

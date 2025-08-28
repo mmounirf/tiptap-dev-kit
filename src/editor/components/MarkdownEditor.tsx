@@ -38,12 +38,12 @@ export default function MarkdownEditor() {
       ...defaultExtensions,
       Placeholder: Placeholder.configure(
         makePlaceholderOptions({
-          placeholder: "You can use all the marks here...",
+          placeholder: "You can input/output markdown from here",
         })
       ),
       Bold,
       Code,
-      Highlight,
+      Highlight: Highlight.configure({ multicolor: true }),
       Italic,
       Link,
       Strike,
