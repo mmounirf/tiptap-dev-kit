@@ -14,6 +14,15 @@ export function pmToMarkdown(doc: Node, schema: Schema): string {
   const mdast = fromProseMirror(doc, {
     schema,
     nodeHandlers: {
+      // Convert ProseMirror mention nodes directly to text nodes with tokens
+      userMention: (node) => ({
+        type: "text",
+        value: `<@U${node.attrs.id}>`,
+      }),
+      fileMention: (node) => ({
+        type: "text",
+        value: `<@F${node.attrs.id}>`,
+      }),
       paragraph: fromPmNode("paragraph"),
       heading: fromPmNode("heading", (node) => ({ depth: node.attrs.level })),
       blockquote: fromPmNode("blockquote"),
