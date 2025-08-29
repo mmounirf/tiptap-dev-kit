@@ -10,6 +10,7 @@ import {
   type RemarkProseMirrorOptions,
 } from "@handlewithcare/remark-prosemirror";
 import type { Node, Schema } from "@tiptap/pm/model";
+import { remarkMentionToken } from "../mention/remark-mention-token";
 
 export async function markdownToPM(
   markdown: string,
@@ -19,9 +20,24 @@ export async function markdownToPM(
     .use(remarkParse)
     .use(remarkGfm)
     .use(remarkHighlightMark)
+    .use(remarkMentionToken)
     .use(remarkProseMirror, {
       schema,
       handlers: {
+        mention: (mention) => {
+          if (mention.entity === "U") {
+            return schema.nodes.userMention?.create({
+              ...mention,
+              mentionSuggestionChar: "@",
+            });
+          } else if (mention.entity === "F") {
+            return schema.nodes.fileMention?.create({
+              ...mention,
+              mentionSuggestionChar: "#",
+            });
+          }
+          return schema.text(`<@${mention.entity}${mention.id}>`);
+        },
         paragraph: toPmNode(schema.nodes.paragraph),
         heading: toPmNode(schema.nodes.heading, (heading) => ({
           level: heading.depth,
