@@ -29,8 +29,21 @@ export const UserMention = Mention.configure({
     items: async ({ query }) => await fetchUsers(query),
   }),
 }).extend({
+  name: "userMention",
   addNodeView() {
     return ReactNodeViewRenderer(MentionNode);
   },
-  name: "user-mention",
+  addAttributes() {
+    return {
+      ...this.parent?.(),
+      entity: {
+        default: "U",
+        parseHTML: (element: HTMLElement) =>
+          element.getAttribute("data-entity-type"),
+        renderHTML: (attributes: Record<string, unknown>) => ({
+          "data-entity-type": attributes.entity,
+        }),
+      },
+    };
+  },
 });

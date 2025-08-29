@@ -44,8 +44,21 @@ export const FileMention = Mention.configure({
     ListComponent: FilesSuggestionsList,
   }),
 }).extend({
+  name: "fileMention",
   addNodeView() {
     return ReactNodeViewRenderer(MentionNode);
   },
-  name: "file-mention",
+  addAttributes() {
+    return {
+      ...this.parent?.(),
+      entity: {
+        default: "F",
+        parseHTML: (element: HTMLElement) =>
+          element.getAttribute("data-entity-type"),
+        renderHTML: (attributes: Record<string, unknown>) => ({
+          "data-entity-type": attributes.entity,
+        }),
+      },
+    };
+  },
 });
