@@ -24,7 +24,7 @@ import { FileMention } from "../extensions/mention/demo/FileMention";
 import { UserMention } from "../extensions/mention/demo/UserMention";
 import { Editor } from "../Editor";
 import { useState } from "react";
-import { demoMarkdown } from "@/assets/markdown-demo";
+import { demoMarkdownMentions } from "@/assets/markdown-demo";
 
 export default function MarkdownEditor() {
   const markdownEditor = useEditor({
@@ -67,7 +67,7 @@ export default function MarkdownEditor() {
       HorizontalRule,
       CodeBlock,
       Markdown: Markdown.configure({
-        initialMarkdown: demoMarkdown,
+        initialMarkdown: demoMarkdownMentions,
       }),
       FileMention,
       UserMention,

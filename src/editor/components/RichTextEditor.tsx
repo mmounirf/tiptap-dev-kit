@@ -15,6 +15,8 @@ import { Editor } from "@/editor/Editor";
 import { useEditor } from "@/editor/hooks/useEditor";
 import { defaultEditorOptions, defaultExtensions } from "../defaults";
 import { makePlaceholderOptions } from "../extensions/placeholder";
+import { FileMention } from "../extensions/mention/demo/FileMention";
+import { UserMention } from "../extensions/mention/demo/UserMention";
 
 export default function RichTextEditor() {
   const richTextEditor = useEditor({
@@ -50,6 +52,8 @@ export default function RichTextEditor() {
       }),
       HorizontalRule,
       CodeBlock,
+      FileMention,
+      UserMention,
     }),
   });
 
