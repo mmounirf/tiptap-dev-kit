@@ -1,5 +1,8 @@
 {
   "name": "tiptap-dev-kit",
   "compatibility_date": "2025-04-03",
-  "pages_build_output_dir": "./storybook-static"
+  "pages_build_output_dir": "./storybook-static",
+  "assets": {
+    "not_found_handling": "single-page-application"
+  }
 }
