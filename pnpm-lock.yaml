@@ -78,9 +78,6 @@ importers:
         specifier: ^4.1.12
         version: 4.1.12
     devDependencies:
-      '@cloudflare/vite-plugin':
-        specifier: ^1.13.8
-        version: 1.13.8(vite@7.1.2(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1))(workerd@1.20250927.0)(wrangler@4.40.3)
       '@eslint/js':
         specifier: ^9.33.0
         version: 9.33.0
@@ -93,9 +90,6 @@ importers:
       '@storybook/addon-vitest':
         specifier: ^9.1.9
         version: 9.1.9(@vitest/browser@3.2.4)(@vitest/runner@3.2.4)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(storybook@9.1.9(@testing-library/dom@10.4.1)(vite@7.1.2(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)))(vitest@3.2.4)
-      '@storybook/builder-vite':
-        specifier: ^9.1.9
-        version: 9.1.9(storybook@9.1.9(@testing-library/dom@10.4.1)(vite@7.1.2(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)))(vite@7.1.2(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1))
       '@storybook/react-vite':
         specifier: ^9.1.9
         version: 9.1.9(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(rollup@4.46.2)(storybook@9.1.9(@testing-library/dom@10.4.1)(vite@7.1.2(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)))(typescript@5.8.3)(vite@7.1.2(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1))
@@ -256,12 +250,6 @@ packages:
     peerDependenciesMeta:
       workerd:
         optional: true
-
-  '@cloudflare/vite-plugin@1.13.8':
-    resolution: {integrity: sha512-swHQS1gBhuisze0RfdqZO4494U2XaVHGhpXovmXLe5tP2tzg+18qlt1DlIXjgJZNdgsX90rPS8fqAVagw7hLRg==}
-    peerDependencies:
-      vite: ^6.1.0 || ^7.0.0
-      wrangler: ^4.40.3
 
   '@cloudflare/workerd-darwin-64@1.20250927.0':
     resolution: {integrity: sha512-rFtXu/qhZziGOltjhHUCdlqP9wLUhf/CmnjJS0hXffGRAVxsCXhJw+7Vlr+hyRSHjHRhEV+gBFc4pHzT10Stzw==}
@@ -872,9 +860,6 @@ packages:
 
   '@remirror/core-constants@3.0.0':
     resolution: {integrity: sha512-42aWfPrimMfDKDi4YegyS7x+/0tlzaqwPQCULLanv3DMIlu96KTJR0fM5isWX2UViOqlGnX6YFgqWepcX+XMNg==}
-
-  '@remix-run/node-fetch-server@0.8.1':
-    resolution: {integrity: sha512-J1dev372wtJqmqn9U/qbpbZxbJSQrogNN2+Qv1lKlpATpe/WQ9aCZfl/xSb9d2Rgh1IyLSvNxZAXPZxruO6Xig==}
 
   '@rolldown/pluginutils@1.0.0-beta.30':
     resolution: {integrity: sha512-whXaSoNUFiyDAjkUF8OBpOm77Szdbk5lGNqFe6CbVbJFrhCCPinCbRA3NjawwlNHla1No7xvXXh+CpSxnPfUEw==}
@@ -1942,10 +1927,6 @@ packages:
   gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
     engines: {node: '>=6.9.0'}
-
-  get-port@7.1.0:
-    resolution: {integrity: sha512-QB9NKEeDg3xxVwCCwJQ9+xycaz6pBB6iQ76wiWMl1927n0Kir6alPiP+yuiICLLU4jpMe08dXfpebuQppFA2zw==}
-    engines: {node: '>=16'}
 
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -3035,23 +3016,6 @@ snapshots:
     optionalDependencies:
       workerd: 1.20250927.0
 
-  '@cloudflare/vite-plugin@1.13.8(vite@7.1.2(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1))(workerd@1.20250927.0)(wrangler@4.40.3)':
-    dependencies:
-      '@cloudflare/unenv-preset': 2.7.5(unenv@2.0.0-rc.21)(workerd@1.20250927.0)
-      '@remix-run/node-fetch-server': 0.8.1
-      get-port: 7.1.0
-      miniflare: 4.20250927.0
-      picocolors: 1.1.1
-      tinyglobby: 0.2.14
-      unenv: 2.0.0-rc.21
-      vite: 7.1.2(@types/node@24.3.0)(jiti@2.5.1)(lightningcss@1.30.1)
-      wrangler: 4.40.3
-      ws: 8.18.0
-    transitivePeerDependencies:
-      - bufferutil
-      - utf-8-validate
-      - workerd
-
   '@cloudflare/workerd-darwin-64@1.20250927.0':
     optional: true
 
@@ -3472,8 +3436,6 @@ snapshots:
       '@types/react': 19.1.10
 
   '@remirror/core-constants@3.0.0': {}
-
-  '@remix-run/node-fetch-server@0.8.1': {}
 
   '@rolldown/pluginutils@1.0.0-beta.30': {}
 
@@ -4571,8 +4533,6 @@ snapshots:
   function-bind@1.1.2: {}
 
   gensync@1.0.0-beta.2: {}
-
-  get-port@7.1.0: {}
 
   glob-parent@5.1.2:
     dependencies:

@@ -41,7 +41,7 @@
     "build": "storybook build",
     "lint": "eslint .",
     "preview": "npx http-server storybook-static",
-    "deploy": "pnpm run build && wrangler deploy"
+    "deploy": "pnpm run build && wrangler pages deploy"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
@@ -69,12 +69,10 @@
     "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "^1.13.8",
     "@eslint/js": "^9.33.0",
     "@storybook/addon-a11y": "^9.1.9",
     "@storybook/addon-docs": "^9.1.9",
     "@storybook/addon-vitest": "^9.1.9",
-    "@storybook/builder-vite": "^9.1.9",
     "@storybook/react-vite": "^9.1.9",
     "@types/node": "^24.3.0",
     "@types/react": "^19.1.10",

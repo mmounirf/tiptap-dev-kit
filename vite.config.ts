@@ -5,7 +5,6 @@ import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react-swc";
 import { defineConfig } from "vite";
-import { cloudflare } from "@cloudflare/vite-plugin";
 
 const dirname =
 	typeof __dirname !== "undefined"
@@ -14,7 +13,7 @@ const dirname =
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-	plugins: [react(), tailwindcss(), cloudflare()],
+	plugins: [react(), tailwindcss()],
 	resolve: {
 		alias: {
 			"@": path.resolve(__dirname, "./src"),
