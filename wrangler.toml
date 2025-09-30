@@ -1,0 +1,6 @@
+name = "tiptap-dev-kit"
+compatibility_date = "2025-04-03"
+
+[build]
+command = "pnpm run build"
+output_directory = "storybook-static"
