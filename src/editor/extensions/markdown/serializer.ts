@@ -1,0 +1,73 @@
+import { unified } from "unified";
+import remarkStringify from "remark-stringify";
+import { remarkHighlightMark } from "remark-highlight-mark";
+
+import {
+  fromProseMirror,
+  fromPmNode,
+  fromPmMark,
+} from "@handlewithcare/remark-prosemirror";
+import remarkGfm from "remark-gfm";
+import type { Node, Schema } from "@tiptap/pm/model";
+
+export function pmToMarkdown(doc: Node, schema: Schema): string {
+  const mdast = fromProseMirror(doc, {
+    schema,
+    nodeHandlers: {
+      // Convert ProseMirror mention nodes directly to text nodes with tokens
+      userMention: (node) => ({
+        type: "text",
+        value: `<@U${node.attrs.id}>`,
+      }),
+      fileMention: (node) => ({
+        type: "text",
+        value: `<@F${node.attrs.id}>`,
+      }),
+      paragraph: fromPmNode("paragraph"),
+      heading: fromPmNode("heading", (node) => ({ depth: node.attrs.level })),
+      blockquote: fromPmNode("blockquote"),
+      codeBlock: fromPmNode("code", (node) => ({
+        lang: node.attrs.language ?? undefined,
+        value: node.textContent,
+      })),
+      horizontalRule: fromPmNode("thematicBreak"),
+      orderedList: fromPmNode("list", (node) => ({
+        ordered: true,
+        start: node.attrs.start ?? 1,
+      })),
+      bulletList: fromPmNode("list", () => ({ ordered: false })),
+      listItem: fromPmNode("listItem"),
+      taskList: fromPmNode("list", () => ({ ordered: false })),
+      taskItem: fromPmNode("listItem", (node) => ({
+        checked: !!node.attrs?.checked,
+      })),
+    },
+    markHandlers: {
+      italic: fromPmMark("emphasis"),
+      bold: fromPmMark("strong"),
+      strike: fromPmMark("delete"),
+      highlight: fromPmMark("highlight"),
+      code(_, node) {
+        return {
+          type: "inlineCode",
+          value: node.textContent ?? "",
+        };
+      },
+      link: fromPmMark("link", (mark) => ({
+        url: mark.attrs.href,
+        title: mark.attrs.title ?? undefined,
+      })),
+    },
+  });
+
+  return unified()
+    .use(remarkGfm)
+    .use(remarkHighlightMark)
+    .use(remarkStringify, {
+      resourceLink: true,
+      fences: true,
+      rule: "-",
+      bullet: "-",
+    })
+    .stringify(mdast);
+}
